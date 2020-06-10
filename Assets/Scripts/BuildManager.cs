@@ -186,5 +186,4 @@ public class BuildManager : MonoBehaviour {
         selectedMapCube.DestroyTurret();
         StartCoroutine(HideUpgradeUI());
     }
-     
 }
