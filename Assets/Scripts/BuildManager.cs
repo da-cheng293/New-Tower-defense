@@ -27,7 +27,7 @@ public class BuildManager : MonoBehaviour {
 
     public Button buttonUpgrade;
 
-    void ChangeMoney(int change=0)
+    public void ChangeMoney(int change=0)
     {
         money += change;
         moneyText.text = "￥" + money;
