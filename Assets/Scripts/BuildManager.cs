@@ -14,12 +14,16 @@ public class BuildManager : MonoBehaviour {
     private TurretData selectedTurretData;
     //表示当前选择的炮台(场景中的游戏物体)
     private MapCube selectedMapCube;
+    //表示当前cube的数字
+    private GameObject selectedNumberData;
 
     public Text moneyText;
 
     public Animator moneyAnimator;
 
     private int money = 1000;
+    //翻牌扣钱数
+    private int flipcost = 100;
 
     public GameObject upgradeCanvas;
 
@@ -51,13 +55,42 @@ public class BuildManager : MonoBehaviour {
                 if (isCollider)
                 {
                     MapCube mapCube = hit.collider.GetComponent<MapCube>();
-                    if (selectedTurretData != null && mapCube.turretGo == null)
+                    Debug.Log(mapCube.name + " " + mapCube.isFlipped);
+
+                    // 扫雷，显示数字
+                    if (!mapCube.isFlipped)
+                    {
+                        if (money >= flipcost)
+                        {
+                            ChangeMoney(-flipcost);
+                            mapCube.BuildNumber(mapCube);
+                        }
+                        else
+                        {
+                            //提示钱不够
+                            moneyAnimator.SetTrigger("Flicker");
+                        }
+                    }
+
+
+                    //MapCube mapCube = hit.collider.GetComponent<MapCube>();
+                    else if (!mapCube.isMine && selectedTurretData != null && mapCube.turretGo == null)
                     {
                         //可以创建 
-                        if (money > selectedTurretData.cost)
+                        if (money >= selectedTurretData.cost)
                         {
                             ChangeMoney(-selectedTurretData.cost);
-                            mapCube.BuildTurret(selectedTurretData);
+                            if (!mapCube.isNull)
+                            {
+                                // 在非null上创建
+                                mapCube.BuildTurret(selectedTurretData);
+                            }
+                            else
+                            {
+                                // 在null上创建
+                                mapCube.BonusTurret(selectedTurretData);
+                            }
+                                
                         }
                         else
                         {
@@ -153,5 +186,4 @@ public class BuildManager : MonoBehaviour {
         selectedMapCube.DestroyTurret();
         StartCoroutine(HideUpgradeUI());
     }
-     
 }
