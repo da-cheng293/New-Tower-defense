@@ -74,6 +74,7 @@
     <Compile Include="Assets\Scripts\Turret.cs" />
     <Compile Include="Assets\Scripts\TurretData.cs" />
     <Compile Include="Assets\Scripts\ViewController.cs" />
+    <Compile Include="Assets\Scripts\ViewMobileController.cs" />
     <Compile Include="Assets\Scripts\Wave.cs" />
     <Compile Include="Assets\Scripts\Waypoints.cs" />
     <Compile Include="Assets\Scripts\paused.cs" />
