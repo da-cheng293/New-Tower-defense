@@ -21,9 +21,9 @@ public class BuildManager : MonoBehaviour {
 
     public Animator moneyAnimator;
 
-    private int money = 1000;
+    public int money = 1000;
     //翻牌扣钱数
-    private int flipcost = 100;
+    public int flipcost = 100;
 
     public GameObject upgradeCanvas;
 

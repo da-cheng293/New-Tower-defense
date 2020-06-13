@@ -29,6 +29,8 @@ public class Turret : MonoBehaviour {
 
     public bool useLaser = false;
 
+    public bool useMissile = false;
+
     public float damageRate = 70;
 
     public LineRenderer laserRenderer;
@@ -54,7 +56,7 @@ public class Turret : MonoBehaviour {
             if (enemys.Count > 0 && timer >= attackRateTime)
             {
                 timer = 0;
-                Attack();
+                Attack(useMissile);
             }
         }
         else if(enemys.Count>0)
@@ -69,6 +71,7 @@ public class Turret : MonoBehaviour {
             if (enemys.Count > 0)
             {
                 laserRenderer.SetPositions(new Vector3[]{firePosition.position, enemys[0].transform.position});
+                Debug.Log(damageRate);
                 enemys[0].GetComponent<Enemy>().TakeDamage(damageRate *Time.deltaTime );
                 laserEffect.transform.position = enemys[0].transform.position;
                 Vector3 pos = transform.position;
@@ -83,7 +86,7 @@ public class Turret : MonoBehaviour {
         }
     }
 
-    void Attack()
+    void Attack(bool useMissile)
     {
         if (enemys[0] == null)
         {
@@ -92,7 +95,7 @@ public class Turret : MonoBehaviour {
         if (enemys.Count > 0)
         {
             GameObject bullet = GameObject.Instantiate(bulletPrefab, firePosition.position, firePosition.rotation);
-            bullet.GetComponent<Bullet>().SetTarget(enemys[0].transform);
+            bullet.GetComponent<Bullet>().SetTarget(enemys[0].transform, useMissile);
         }
         else
         {

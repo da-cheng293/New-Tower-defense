@@ -163,7 +163,7 @@ MonoBehaviour:
     serializedVersion: 2
     x: 745
     y: 0
-    width: 265
+    width: 266
     height: 717
   m_MinSize: {x: 232, y: 492}
   m_MaxSize: {x: 10002, y: 14042}
@@ -184,9 +184,9 @@ MonoBehaviour:
   m_Children: []
   m_Position:
     serializedVersion: 2
-    x: 1010
+    x: 1011
     y: 0
-    width: 512
+    width: 511
     height: 717
   m_MinSize: {x: 275, y: 50}
   m_MaxSize: {x: 4000, y: 4000}
@@ -212,7 +212,7 @@ MonoBehaviour:
     serializedVersion: 2
     x: 0
     y: 0
-    width: 265
+    width: 266
     height: 315
   m_MinSize: {x: 202, y: 221}
   m_MaxSize: {x: 4002, y: 4021}
@@ -238,7 +238,7 @@ MonoBehaviour:
     serializedVersion: 2
     x: 0
     y: 315
-    width: 265
+    width: 266
     height: 402
   m_MinSize: {x: 232, y: 271}
   m_MaxSize: {x: 10002, y: 10021}
@@ -268,9 +268,9 @@ MonoBehaviour:
     m_Tooltip: 
   m_Pos:
     serializedVersion: 2
-    x: 1017.60004
+    x: 1018.4
     y: 80.8
-    width: 510
+    width: 509
     height: 696
   m_ViewDataDictionary: {fileID: 0}
   m_OpenAddComponentMenu: 0
@@ -308,7 +308,7 @@ MonoBehaviour:
     serializedVersion: 2
     x: 752
     y: 395.2
-    width: 263
+    width: 264
     height: 381
   m_ViewDataDictionary: {fileID: 0}
   m_SearchFilter:
@@ -324,7 +324,7 @@ MonoBehaviour:
     m_SkipHidden: 0
     m_SearchArea: 1
     m_Folders:
-    - Assets/Scripts
+    - Assets/Prefab/Enemy1
   m_ViewMode: 0
   m_StartGridSize: 64
   m_LastFolders:
@@ -362,10 +362,10 @@ MonoBehaviour:
       m_Icon: {fileID: 0}
       m_ResourceFile: 
   m_AssetTreeState:
-    scrollPos: {x: 0, y: 476}
+    scrollPos: {x: 0, y: 60}
     m_SelectedIDs: 
     m_LastClickedID: 0
-    m_ExpandedIDs: ffffffff000000009a360000a6360000b0360000b23600002a3a00002c3a00002e3a0000303a0000323a0000343a0000363a0000383a00003a3a00003c3a00003e3a0000403a0000423a0000443a0000463a0000
+    m_ExpandedIDs: ffffffff000000009a360000a6360000b0360000b23600002a3a00002c3a00002e3a0000303a0000323a0000343a0000363a0000383a00003a3a00003c3a0000403a0000423a0000443a0000463a0000623a0000643a0000663a0000683a00006a3a0000
     m_RenameOverlay:
       m_UserAcceptedRename: 0
       m_Name: 
@@ -651,14 +651,14 @@ MonoBehaviour:
     serializedVersion: 2
     x: 752
     y: 80.8
-    width: 263
+    width: 264
     height: 294
   m_ViewDataDictionary: {fileID: 0}
   m_SceneHierarchy:
     m_TreeViewState:
       scrollPos: {x: 0, y: 0}
-      m_SelectedIDs: 4a300000
-      m_LastClickedID: 0
+      m_SelectedIDs: fe350000
+      m_LastClickedID: 13822
       m_ExpandedIDs: 6afbffff
       m_RenameOverlay:
         m_UserAcceptedRename: 0

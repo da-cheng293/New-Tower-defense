@@ -52,6 +52,7 @@ public class Enemy : MonoBehaviour {
 
     public void TakeDamage (float damage) {
         if (hp <= 0) return;
+        Debug.Log("hp:"+hp);
         hp -= damage;
         hpSlider.value = (float) hp / totalHp;
         if (hp <= 0) {
