@@ -21,15 +21,35 @@ public class BuildManager : MonoBehaviour {
 
     public Animator moneyAnimator;
 
-    private int money = 1000;
+    public int money = 1000;
     //翻牌扣钱数
-    private int flipcost = 100;
+    public int flipcost = 100;
 
     public GameObject upgradeCanvas;
 
     private Animator upgradeCanvasAnimator;
 
     public Button buttonUpgrade;
+
+    //地雷text控件，地雷数量
+    public Text mineText;
+    private int mineNum = 18;
+
+    //更改地雷数量
+    public void ChangeMine(int change = 0)
+    {
+        mineText = GameObject.Find("Canvas/Mine").GetComponent<Text>();
+        mineNum += change;
+        if (mineNum <= 0)
+        {
+            mineText.text = "Mine: \nEmpty";
+        }
+        else
+        {
+            mineText.text = "Mine: \n" + mineNum;
+        }
+        //Debug.Log(mineNum);     
+    }
 
     public void ChangeMoney(int change=0)
     {
@@ -64,6 +84,10 @@ public class BuildManager : MonoBehaviour {
                         {
                             ChangeMoney(-flipcost);
                             mapCube.BuildNumber(mapCube);
+                            if (mapCube.isMine)
+                            {
+                                ChangeMine(-1);
+                            }
                         }
                         else
                         {

@@ -7,6 +7,7 @@ public class Enemy : MonoBehaviour {
 
     public float speed = 10;
     public float hp = 150;
+    public float money = 10;
     private float totalHp;
     public GameObject explosionEffect;
     private Slider hpSlider;
@@ -51,10 +52,11 @@ public class Enemy : MonoBehaviour {
 
     public void TakeDamage (float damage) {
         if (hp <= 0) return;
+        Debug.Log("hp:"+hp);
         hp -= damage;
         hpSlider.value = (float) hp / totalHp;
         if (hp <= 0) {
-            GameObject.Find("GameManager").GetComponent<BuildManager>().ChangeMoney((int)totalHp);
+            GameObject.Find("GameManager").GetComponent<BuildManager>().ChangeMoney((int)money);
             Die ();
         }
     }
