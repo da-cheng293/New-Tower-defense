@@ -207,7 +207,7 @@ public class BuildManager : MonoBehaviour {
     }
     public void OnDestroyButtonDown()
     {
-        ChangeMoney((int)((float)-selectedTurretData.cost * 0.8));
+        ChangeMoney((int)((float)selectedTurretData.cost * 0.8));
         selectedMapCube.DestroyTurret();
         StartCoroutine(HideUpgradeUI());
     }
