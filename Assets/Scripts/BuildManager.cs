@@ -124,21 +124,22 @@ public class BuildManager : MonoBehaviour {
                     }
                     else if (mapCube.turretGo != null)
                     {
-                        
+
                         // 升级处理
-                        
-                        //if (mapCube.isUpgraded)
-                        //{
-                        //    ShowUpgradeUI(mapCube.transform.position, true);
-                        //}
-                        //else
-                        //{
+
+                        // if (mapCube.isUpgraded)
+                        // {
+                        //     ShowUpgradeUI(mapCube.transform.position, true);
+                        //  }
+                        //  else
+                        //  {
                         //    ShowUpgradeUI(mapCube.transform.position, false);
-                        //}
-                        if (mapCube == selectedMapCube && upgradeCanvas.activeInHierarchy)
+                        //   }
+                        Debug.Log("reach");
+                       if (mapCube == selectedMapCube && upgradeCanvas.activeInHierarchy)
                         {
                             StartCoroutine(HideUpgradeUI());
-                        }
+                       }
                         else
                         {
                             ShowUpgradeUI(mapCube.transform.position, mapCube.isUpgraded);
@@ -187,7 +188,7 @@ public class BuildManager : MonoBehaviour {
     {
         upgradeCanvasAnimator.SetTrigger("Hide");
         //upgradeCanvas.SetActive(false);
-        yield return new WaitForSeconds(0.8f);
+       yield return new WaitForSeconds(0.8f);
         upgradeCanvas.SetActive(false);
     }
 

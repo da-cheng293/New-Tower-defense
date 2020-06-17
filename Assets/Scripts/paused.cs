@@ -5,6 +5,8 @@ using UnityEngine;
 public class paused : MonoBehaviour
 {
     public GameObject pauseButton, pausePanel;
+    
+   // private Enemy control;
     // Start is called before the first frame update
     public void Start()
     {
@@ -14,13 +16,15 @@ public class paused : MonoBehaviour
     {
         pausePanel.SetActive(true);
         pauseButton.SetActive(false);
-        Time.timeScale = 0;
+        Enemy.speed = 0;
+        Turret.control = false;
     }
     public void onUnpause()
     {
         pausePanel.SetActive(false);
         pauseButton.SetActive(true);
-        Time.timeScale = 1;
+        Enemy.speed = 10;
+        Turret.control = true;
     }
     // Update is called once per frame
 }
