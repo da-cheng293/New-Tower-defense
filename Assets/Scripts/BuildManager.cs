@@ -19,6 +19,8 @@ public class BuildManager : MonoBehaviour {
 
     public Text moneyText;
 
+    public Text dropMoneyText;
+
     public Animator moneyAnimator;
 
     public int money = 1000;
@@ -54,7 +56,7 @@ public class BuildManager : MonoBehaviour {
     public void ChangeMoney(int change=0)
     {
         money += change;
-        moneyText.text = "￥" + money;
+        moneyText.text = "$" + money;
     }
 
     void Start()
@@ -142,6 +144,7 @@ public class BuildManager : MonoBehaviour {
                        }
                         else
                         {
+                            dropMoneyText.text = "+$" + (int)((float)mapCube.turretData.cost * 0.8);
                             ShowUpgradeUI(mapCube.transform.position, mapCube.isUpgraded);
                         }
                         selectedMapCube = mapCube;
@@ -177,15 +180,19 @@ public class BuildManager : MonoBehaviour {
 
     void ShowUpgradeUI(Vector3 pos, bool isDisableUpgrade=false)
     {
+
+        
         StopCoroutine("HideUpgradeUI");
         upgradeCanvas.SetActive(false);
         upgradeCanvas.SetActive(true);
         upgradeCanvas.transform.position = pos;
         buttonUpgrade.interactable = !isDisableUpgrade;
+        
     }
 
     IEnumerator HideUpgradeUI()
     {
+        //dropMoneyText.text = "";
         upgradeCanvasAnimator.SetTrigger("Hide");
         //upgradeCanvas.SetActive(false);
        yield return new WaitForSeconds(0.8f);
@@ -208,7 +215,8 @@ public class BuildManager : MonoBehaviour {
     }
     public void OnDestroyButtonDown()
     {
-        ChangeMoney((int)((float)selectedTurretData.cost * 0.8));
+        
+        ChangeMoney((int)((float)selectedMapCube.turretData.cost * 0.8));
         selectedMapCube.DestroyTurret();
         StartCoroutine(HideUpgradeUI());
     }
