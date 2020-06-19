@@ -26,7 +26,7 @@ public class Turret : MonoBehaviour {
     public GameObject bulletPrefab;//子弹
     public Transform firePosition;
     public Transform head;
-    public static bool control = true;
+
     public bool useLaser = false;
 
     public bool useMissile = false;
@@ -56,13 +56,10 @@ public class Turret : MonoBehaviour {
             if (enemys.Count > 0 && timer >= attackRateTime)
             {
                 timer = 0;
-                if (control == true)
-                {
-                    Attack(useMissile);
-                }
+                Attack(useMissile);
             }
         }
-        else if(enemys.Count>0 && control == true)
+        else if(enemys.Count>0)
         {
             if (laserRenderer.enabled == false)
                 laserRenderer.enabled = true;

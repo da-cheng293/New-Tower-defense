@@ -5,7 +5,7 @@ using UnityEngine.UI;
 
 public class Enemy : MonoBehaviour {
 
-    public static float speed = 10;
+    public float speed = 10;
     public float hp = 150;
     public float money = 10;
     private float totalHp;
@@ -13,20 +13,16 @@ public class Enemy : MonoBehaviour {
     private Slider hpSlider;
     private Transform[] positions;
     private int index = 0;
-    //public paused control_p;
-  
+
     // Use this for initialization
     void Start () {
         positions = Waypoints.positions;
         totalHp = hp;
         hpSlider = GetComponentInChildren<Slider> ();
-        
-       // control_p.control = 10;
     }
 
     // Update is called once per frame
     void Update () {
-        //speed = control_p.control;
         Move ();
     }
 
@@ -56,7 +52,7 @@ public class Enemy : MonoBehaviour {
 
     public void TakeDamage (float damage) {
         if (hp <= 0) return;
-        Debug.Log("hp:"+hp);
+        //Debug.Log("hp:"+hp);
         hp -= damage;
         hpSlider.value = (float) hp / totalHp;
         if (hp <= 0) {
