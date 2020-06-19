@@ -96,8 +96,7 @@ public class BuildManager : MonoBehaviour {
                         {
                             ChangeMoney(-flipcost);
                             mapCube.BuildNumber(mapCube);
-                            if (mapCube.isMine)
-                            {
+                            if(mapCube.isMine){
                                 ChangeMine(-1);
                             }
                         }
@@ -119,9 +118,11 @@ public class BuildManager : MonoBehaviour {
                 || mapCube.name.Equals("MapCube (63)") || mapCube.name.Equals("MapCube (65)") || mapCube.name.Equals("MapCube (69)")
                 || mapCube.name.Equals("MapCube (72)") || mapCube.name.Equals("MapCube (76)") || mapCube.name.Equals("MapCube (77)"))
                         {
+                            
                             //Buildbonus
                             if (money >= selectedTurretData.cost)
                             {
+                                ChangeMine(-1);
                                 ChangeMoney(-selectedTurretData.cost);
                                 mapCube.BonusTurret(selectedTurretData);
                             }
@@ -206,6 +207,10 @@ public class BuildManager : MonoBehaviour {
         {
             selectedTurretData = laserTurretData;
         }
+        else
+        {
+            selectedTurretData = null;
+        }
     }
 
     public void OnMissileSelected(bool isOn)
@@ -214,12 +219,20 @@ public class BuildManager : MonoBehaviour {
         {
             selectedTurretData = missileTurretData;
         }
+        else
+        {
+            selectedTurretData = null;
+        }
     }
     public void OnStandardSelected(bool isOn)
     {
         if (isOn)
         {
             selectedTurretData = standardTurretData;
+        }
+        else
+        {
+            selectedTurretData = null;
         }
     }
 
