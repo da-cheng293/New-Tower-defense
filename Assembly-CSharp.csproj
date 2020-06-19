@@ -69,7 +69,6 @@
      <Compile Include="Assets\Scripts\ViewMobileController.cs" />
      <Compile Include="Assets\Scripts\Wave.cs" />
      <Compile Include="Assets\Scripts\Waypoints.cs" />
-     <Compile Include="Assets\Scripts\paused.cs" />
  <Reference Include="UnityEngine">
  <HintPath>D:/unity/Editor/Data/Managed/UnityEngine/UnityEngine.dll</HintPath>
  </Reference>
