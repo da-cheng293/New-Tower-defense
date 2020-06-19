@@ -17,9 +17,7 @@ public class MapCube : MonoBehaviour {
     public bool isFlipped = false;
     public bool isMine = false;
     public bool isNull = false;
-    public bool hasFlag = false;
-    
-    public GameObject myFlagModel;
+
     public GameObject buildEffect;
 
     private Renderer renderer;
@@ -33,18 +31,6 @@ public class MapCube : MonoBehaviour {
     {
         if (isFlipped)
         {
-            if (hasFlag)
-            {
-                GameObject temp = myFlagModel;
-                
-                Destroy(myFlagModel);
-                myFlagModel = null;
-                //myFlagModel.gameObject.SetActive(false);
-                Debug.Log("set active fail");
-
-            }
-
-
             this.turretData = turretData;
             isUpgraded = false;
             turretGo = GameObject.Instantiate(turretData.turretPrefab, transform.position, Quaternion.identity);
@@ -52,24 +38,6 @@ public class MapCube : MonoBehaviour {
             Destroy(effect, 1.5f);
         }
     }
-
-
-    public void buildFlag(MapCube mapCube) {
-        this.hasFlag = mapCube.hasFlag;
-        if (!hasFlag)
-        {
-            hasFlag = true;
-            //生成旗帜模型 Johan
-            Debug.Log("生成旗帜模型");
-            GameObject tempFlag = (GameObject)Resources.Load("FlagObj");
-            myFlagModel = Instantiate(tempFlag, mapCube.transform.position, mapCube.transform.rotation);
-            //this.myFlagModel = tempFlag;
-            myFlagModel.transform.parent = transform;
-        }
-
-    }
-
-
 
     public void BuildNumber(MapCube mapCube)
     {
@@ -158,20 +126,13 @@ public class MapCube : MonoBehaviour {
     //在bonus点上建立Tower
     public void BonusTurret(TurretData turretData)
     {
-        //Debug.Log("123");
+        Debug.Log("123");
         this.turretData = turretData;
         isUpgraded = true;
         turretGo = GameObject.Instantiate(turretData.turretUpgradedPrefab, transform.position, Quaternion.identity);
         GameObject effect = GameObject.Instantiate(buildEffect, transform.position, Quaternion.identity);
-        Destroy(effect, 1.5f); 
-    }
-
-    public void BuildWrong(MapCube mapCube)
-    {
-        mapCube.DestroyFlag();
-        GameObject selectedNumberData = (GameObject)Resources.Load("Mine");
-        Instantiate(selectedNumberData, mapCube.transform.position, mapCube.transform.rotation);
-
+        Destroy(effect, 1.5f);
+        
     }
 
     public void UpgradeTurret()
@@ -191,14 +152,6 @@ public class MapCube : MonoBehaviour {
         isUpgraded = false;
         turretGo = null;
         turretData=null;
-        GameObject effect = GameObject.Instantiate(buildEffect, transform.position, Quaternion.identity);
-        Destroy(effect, 1.5f);
-    }
-
-    public void DestroyFlag()
-    {
-        
-        Destroy(myFlagModel);
         GameObject effect = GameObject.Instantiate(buildEffect, transform.position, Quaternion.identity);
         Destroy(effect, 1.5f);
     }

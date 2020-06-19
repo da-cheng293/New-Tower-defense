@@ -9,9 +9,6 @@ public class BuildManager : MonoBehaviour {
     public TurretData laserTurretData;
     public TurretData missileTurretData;
     public TurretData standardTurretData;
-    public TurretData Flag;
-
-    public FlagHandler myFH;//Set a flag handler
 
     //表示当前选择的炮台(要建造的炮台)
     private TurretData selectedTurretData;
@@ -21,6 +18,8 @@ public class BuildManager : MonoBehaviour {
     private GameObject selectedNumberData;
 
     public Text moneyText;
+
+    public Text dropMoneyText;
 
     public Animator moneyAnimator;
 
@@ -57,7 +56,7 @@ public class BuildManager : MonoBehaviour {
     public void ChangeMoney(int change=0)
     {
         money += change;
-        moneyText.text = "￥" + money;
+        moneyText.text = "$" + money;
     }
 
     void Start()
@@ -80,19 +79,10 @@ public class BuildManager : MonoBehaviour {
                     MapCube mapCube = hit.collider.GetComponent<MapCube>();
                     Debug.Log(mapCube.name + " " + mapCube.isFlipped);
 
-
-
                     // 扫雷，显示数字
-                    if (!mapCube.isFlipped)// 没翻，还要判定有没有插旗
+                    if (!mapCube.isFlipped)
                     {
-                        if (myFH.flagModel)//如果有按flag 按钮进入插旗模式
-                        {
-                            //插旗，生成旗帜模型，
-                            mapCube.buildFlag(mapCube);
-                            mapCube.isFlipped = true;
-                            Debug.Log("Set Flag");
-                        }
-                        else if (money >= flipcost)
+                        if (money >= flipcost)
                         {
                             ChangeMoney(-flipcost);
                             mapCube.BuildNumber(mapCube);
@@ -108,51 +98,25 @@ public class BuildManager : MonoBehaviour {
                         }
                     }
 
-                    else if (mapCube.isFlipped && mapCube.hasFlag && selectedTurretData != null && mapCube.turretGo == null)//翻，有旗
+
+                    //MapCube mapCube = hit.collider.GetComponent<MapCube>();
+                    else if (!mapCube.isMine && selectedTurretData != null && mapCube.turretGo == null)
                     {
-                        //判定
-                        //Cube确实是Mine
-                        if (mapCube.name.Equals("MapCube (1)") || mapCube.name.Equals("MapCube (4)") || mapCube.name.Equals("MapCube (5)")
-                || mapCube.name.Equals("MapCube (9)") || mapCube.name.Equals("MapCube (16)") || mapCube.name.Equals("MapCube (22)")
-                || mapCube.name.Equals("MapCube (26)") || mapCube.name.Equals("MapCube (34)") || mapCube.name.Equals("MapCube (38)")
-                || mapCube.name.Equals("MapCube (48)") || mapCube.name.Equals("MapCube (58)") || mapCube.name.Equals("MapCube (59)")
-                || mapCube.name.Equals("MapCube (63)") || mapCube.name.Equals("MapCube (65)") || mapCube.name.Equals("MapCube (69)")
-                || mapCube.name.Equals("MapCube (72)") || mapCube.name.Equals("MapCube (76)") || mapCube.name.Equals("MapCube (77)"))
-                        {
-                            //Buildbonus
-                            if (money >= selectedTurretData.cost)
-                            {
-                                ChangeMoney(-selectedTurretData.cost);
-                                mapCube.BonusTurret(selectedTurretData);
-                            }
-                            else
-                            {
-                                //提示钱不够
-                                moneyAnimator.SetTrigger("Flicker");
-                            }
-                        }
-                        else
-                        {
-                            //变叉
-                            if (money >= selectedTurretData.cost)
-                            {
-                                ChangeMoney(-selectedTurretData.cost);
-                                mapCube.BuildWrong(mapCube);
-                            }
-                            else
-                            {
-                                //提示钱不够
-                                moneyAnimator.SetTrigger("Flicker");
-                            }
-                            
-                        }
-                    }
-                    else if (mapCube.isFlipped && !mapCube.hasFlag && selectedTurretData != null && mapCube.turretGo == null)//翻，无旗
-                    {
+                        //可以创建 
                         if (money >= selectedTurretData.cost)
                         {
                             ChangeMoney(-selectedTurretData.cost);
-                            mapCube.BuildTurret(selectedTurretData);
+                            if (!mapCube.isNull)
+                            {
+                                // 在非null上创建
+                                mapCube.BuildTurret(selectedTurretData);
+                            }
+                            else
+                            {
+                                // 在null上创建
+                                mapCube.BonusTurret(selectedTurretData);
+                            }
+                                
                         }
                         else
                         {
@@ -165,20 +129,22 @@ public class BuildManager : MonoBehaviour {
 
                         // 升级处理
 
-                        //if (mapCube.isUpgraded)
-                        //{
-                        //    ShowUpgradeUI(mapCube.transform.position, true);
-                        //}
-                        //else
-                        //{
+                        // if (mapCube.isUpgraded)
+                        // {
+                        //     ShowUpgradeUI(mapCube.transform.position, true);
+                        //  }
+                        //  else
+                        //  {
                         //    ShowUpgradeUI(mapCube.transform.position, false);
-                        //}
-                        if (mapCube == selectedMapCube && upgradeCanvas.activeInHierarchy)
+                        //   }
+                        Debug.Log("reach");
+                       if (mapCube == selectedMapCube && upgradeCanvas.activeInHierarchy)
                         {
                             StartCoroutine(HideUpgradeUI());
-                        }
+                       }
                         else
                         {
+                            dropMoneyText.text = "+$" + (int)((float)mapCube.turretData.cost * 0.8);
                             ShowUpgradeUI(mapCube.transform.position, mapCube.isUpgraded);
                         }
                         selectedMapCube = mapCube;
@@ -188,17 +154,6 @@ public class BuildManager : MonoBehaviour {
             }
         }
     }
-
-
-    //public void onFlagSelelcted(bool isOn) {
-
-    //    if (isOn)
-    //    {
-    //        selectedTurretData = Flag;
-    //        Debug.Log(isOn);
-    //    }
-    //}
-
 
     public void OnLaserSelected(bool isOn)
     {
@@ -225,18 +180,22 @@ public class BuildManager : MonoBehaviour {
 
     void ShowUpgradeUI(Vector3 pos, bool isDisableUpgrade=false)
     {
+
+        
         StopCoroutine("HideUpgradeUI");
         upgradeCanvas.SetActive(false);
         upgradeCanvas.SetActive(true);
         upgradeCanvas.transform.position = pos;
         buttonUpgrade.interactable = !isDisableUpgrade;
+        
     }
 
     IEnumerator HideUpgradeUI()
     {
+        //dropMoneyText.text = "";
         upgradeCanvasAnimator.SetTrigger("Hide");
         //upgradeCanvas.SetActive(false);
-        yield return new WaitForSeconds(0.8f);
+       yield return new WaitForSeconds(0.8f);
         upgradeCanvas.SetActive(false);
     }
 
@@ -256,6 +215,8 @@ public class BuildManager : MonoBehaviour {
     }
     public void OnDestroyButtonDown()
     {
+        
+        ChangeMoney((int)((float)selectedMapCube.turretData.cost * 0.8));
         selectedMapCube.DestroyTurret();
         StartCoroutine(HideUpgradeUI());
     }
