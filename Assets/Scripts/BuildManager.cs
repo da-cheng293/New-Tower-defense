@@ -151,7 +151,7 @@ public class BuildManager : MonoBehaviour {
                             
                         }
                     }
-                    else if (mapCube.isFlipped && !mapCube.hasFlag && selectedTurretData != null && mapCube.turretGo == null)//翻，无旗
+                    else if (mapCube.isFlipped && !mapCube.isMine && !mapCube.hasFlag && selectedTurretData != null && mapCube.turretGo == null)//翻，无旗
                     {
                         if (money >= selectedTurretData.cost)
                         {

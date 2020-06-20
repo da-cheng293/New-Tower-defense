@@ -132,7 +132,7 @@ public class MapCube : MonoBehaviour {
             {
                 isMine = true;
                 Debug.Log("在" + mapCube.name + "发现MapCube是雷");
-                GameObject selectedNumberData = (GameObject)Resources.Load("Mine");
+                GameObject selectedNumberData = (GameObject)Resources.Load("Mine1");
                 Instantiate(selectedNumberData, mapCube.transform.position, mapCube.transform.rotation);
             }
             // 发现MapCube是bonus
