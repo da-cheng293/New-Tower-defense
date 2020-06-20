@@ -25,6 +25,9 @@ public class BuildManager : MonoBehaviour {
     public Animator moneyAnimator;
 
     public int money = 1000;
+
+
+    public Text dropMoneyText;
     //翻牌扣钱数
     public int flipcost = 100;
 
@@ -57,7 +60,7 @@ public class BuildManager : MonoBehaviour {
     public void ChangeMoney(int change=0)
     {
         money += change;
-        moneyText.text = "￥" + money;
+        moneyText.text = "$" + money;
     }
 
     void Start()
@@ -180,6 +183,7 @@ public class BuildManager : MonoBehaviour {
                         }
                         else
                         {
+                            dropMoneyText.text = "+$" + (int)((float)mapCube.turretData.cost * 0.8);
                             ShowUpgradeUI(mapCube.transform.position, mapCube.isUpgraded);
                         }
                         selectedMapCube = mapCube;
@@ -269,6 +273,7 @@ public class BuildManager : MonoBehaviour {
     }
     public void OnDestroyButtonDown()
     {
+        ChangeMoney((int)((float)selectedMapCube.turretData.cost * 0.8));
         selectedMapCube.DestroyTurret();
         StartCoroutine(HideUpgradeUI());
     }
