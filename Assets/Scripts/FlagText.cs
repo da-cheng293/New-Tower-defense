@@ -19,11 +19,11 @@ public class FlagText : MonoBehaviour
         Debug.Log(flag.flagModel);
         if (flag.flagModel == true)
         {
-            message.text = "On";
+            message.text = "ON";
         }
         else
         {
-            message.text = "Off";
+            message.text = "OFF";
         }
     }
 }
