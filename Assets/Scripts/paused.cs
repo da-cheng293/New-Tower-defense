@@ -62,12 +62,14 @@ public class paused : MonoBehaviour
         Enemy.speed = 0;
 
         Turret.control = false;
+        EnemySpawner.control = false;
         key = 1;
         if (timeLeft < 0)
         {
             Enemy.speed = 10;
 
             Turret.control = true;
+            EnemySpawner.control = true;
             onUnpause();
         }
     }
@@ -89,6 +91,7 @@ public class paused : MonoBehaviour
         pauseButton.SetActive(true);
         Enemy.speed = 10;
         Turret.control = true;
+        EnemySpawner.control = true;
         key = 0;
     }
     // Update is called once per frame

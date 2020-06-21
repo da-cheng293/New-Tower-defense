@@ -9,7 +9,7 @@ public class EnemySpawner : MonoBehaviour {
     public Transform START;
     public float waveRate = 0.2f;
     private Coroutine coroutine;
-
+    public static bool control = true;
     void Start()
     {
         coroutine = StartCoroutine(SpawnEnemy());
@@ -28,6 +28,10 @@ public class EnemySpawner : MonoBehaviour {
                 CountEnemyAlive++;
                 if(i!=wave.count-1)
                     yield return new WaitForSeconds(wave.rate);
+                while (control ==false)
+                {
+                    yield return new WaitForSeconds(wave.rate);
+                }
             }
             while (CountEnemyAlive > 0)
             {
