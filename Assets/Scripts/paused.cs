@@ -11,6 +11,7 @@ public class paused : MonoBehaviour
     public Text remainfrequency;
     private float timeseconds = 30.0f;
     private int frequcies = 3;
+    private bool isPause = false;
     // private Enemy control;
     // Start is called before the first frame update
     void changetime(float changetimenumber = 0.0f)
@@ -64,18 +65,22 @@ public class paused : MonoBehaviour
         Turret.control = false;
         EnemySpawner.control = false;
         key = 1;
+        if(!isPause) {
+            changefrequency(-1);
+        }
+        isPause = true;
         if (timeLeft < 0)
         {
             Enemy.speed = 10;
 
             Turret.control = true;
             EnemySpawner.control = true;
-            onUnpause();
+            onUnpause(); 
         }
     }
     public void onUnpause()
     {
-        changefrequency(-1);
+        // changefrequency(-1);
         timeseconds = 30.0f;
         //frequcies = frequcies-1;
         timeLeft = 30.0f;
@@ -93,6 +98,7 @@ public class paused : MonoBehaviour
         Turret.control = true;
         EnemySpawner.control = true;
         key = 0;
+        isPause = false;
     }
     // Update is called once per frame
 }
