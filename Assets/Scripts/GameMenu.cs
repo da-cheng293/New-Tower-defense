@@ -9,6 +9,11 @@ public class GameMenu : MonoBehaviour {
     {
         SceneManager.LoadScene(1);
     }
+
+    public void OnRules()
+    {
+        SceneManager.LoadScene(2);
+    }
     public void OnExitGame()
     {
 #if UNITY_EDITOR
