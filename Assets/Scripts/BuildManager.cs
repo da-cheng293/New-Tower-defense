@@ -39,7 +39,7 @@ public class BuildManager : MonoBehaviour {
 
     //地雷text控件，地雷数量
     public Text mineText;
-    private int mineNum = 18;
+    public int mineNum = 18;
 
     //更改地雷数量
     public void ChangeMine(int change = 0)
@@ -114,12 +114,7 @@ public class BuildManager : MonoBehaviour {
                     {
                         //判定
                         //Cube确实是Mine
-                        if (mapCube.name.Equals("MapCube (1)") || mapCube.name.Equals("MapCube (4)") || mapCube.name.Equals("MapCube (5)")
-                || mapCube.name.Equals("MapCube (9)") || mapCube.name.Equals("MapCube (16)") || mapCube.name.Equals("MapCube (22)")
-                || mapCube.name.Equals("MapCube (26)") || mapCube.name.Equals("MapCube (34)") || mapCube.name.Equals("MapCube (38)")
-                || mapCube.name.Equals("MapCube (48)") || mapCube.name.Equals("MapCube (58)") || mapCube.name.Equals("MapCube (59)")
-                || mapCube.name.Equals("MapCube (63)") || mapCube.name.Equals("MapCube (65)") || mapCube.name.Equals("MapCube (69)")
-                || mapCube.name.Equals("MapCube (72)") || mapCube.name.Equals("MapCube (76)") || mapCube.name.Equals("MapCube (77)"))
+                        if (mapCube.name.Equals("MapCubeM"))
                         {
                             
                             //Buildbonus

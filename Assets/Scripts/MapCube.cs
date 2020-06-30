@@ -71,7 +71,7 @@ public class MapCube : MonoBehaviour {
 
 
 
-    public void BuildNumber(MapCube mapCube)
+    /**public void BuildNumber(MapCube mapCube)
     {
         this.isFlipped = mapCube.isFlipped;
         if (!isFlipped)
@@ -145,6 +145,71 @@ public class MapCube : MonoBehaviour {
                 Instantiate(selectedNumberData, mapCube.transform.position, mapCube.transform.rotation);
             }
 
+
+            //this.numberData = numberData;
+            //Debug.Log(numberData);
+            //numberGo = GameObject.Instantiate(numberData, transform.position, Quaternion.identity);
+            //Debug.Log(numberGo);
+            GameObject effect = GameObject.Instantiate(buildEffect, transform.position, Quaternion.identity);
+            Destroy(effect, 1.5f);
+        }
+    }*/
+    public void BuildNumber(MapCube mapCube)
+    {
+        this.isFlipped = mapCube.isFlipped;
+        if (!isFlipped)
+        {
+            isFlipped = true;
+            // 发现MapCube是one
+            if (mapCube.name.Equals("MapCube1"))
+            {
+                Debug.Log("发现MapCube是one");
+                //Debug.Log(mapCube.transform.rotation);
+                GameObject selectedNumberData = (GameObject)Resources.Load("One");
+                Instantiate(selectedNumberData, mapCube.transform.position, mapCube.transform.rotation);
+            }
+            // 发现MapCube是two
+            else if (mapCube.name.Equals("MapCube2"))
+            {
+
+                Debug.Log("在" + mapCube.name + "发现MapCube是two");
+                GameObject selectedNumberData = (GameObject)Resources.Load("Two");
+                Instantiate(selectedNumberData, mapCube.transform.position, mapCube.transform.rotation);
+            }
+            // 发现MapCube是three
+            else if (mapCube.name.Equals("MapCube3"))
+            {
+
+                Debug.Log("在" + mapCube.name + "发现MapCube是three");
+                GameObject selectedNumberData = (GameObject)Resources.Load("Three");
+                Instantiate(selectedNumberData, mapCube.transform.position, mapCube.transform.rotation);
+            }
+            // 发现MapCube是four
+            else if (mapCube.name.Equals("MapCube4"))
+            {
+
+                Debug.Log("在" + mapCube.name + "发现MapCube是four");
+                GameObject selectedNumberData = (GameObject)Resources.Load("Four");
+                Instantiate(selectedNumberData, mapCube.transform.position, mapCube.transform.rotation);
+            }
+            // 发现MapCube是雷
+            else if (mapCube.name.Equals("MapCubeM"))
+            {
+                isMine = true;
+                Debug.Log("在" + mapCube.name + "发现MapCube是雷");
+                GameObject selectedNumberData = (GameObject)Resources.Load("Mine1");
+                Instantiate(selectedNumberData, mapCube.transform.position, mapCube.transform.rotation);
+            }
+            // 发现MapCube是bonus
+
+            else
+            {
+                isNull = true;
+                Debug.Log("在" + mapCube.name + "发现MapCube是空");
+                GameObject selectedNumberData = (GameObject)Resources.Load("Null");
+                Instantiate(selectedNumberData, mapCube.transform.position, mapCube.transform.rotation);
+            }
+            
 
             //this.numberData = numberData;
             //Debug.Log(numberData);
