@@ -10,6 +10,11 @@ public class GameMenu : MonoBehaviour {
         SceneManager.LoadScene(1);
     }
 
+    public void OnStartGame2()
+    {
+        SceneManager.LoadScene(3);
+    }
+
     public void OnRules()
     {
         SceneManager.LoadScene(2);
