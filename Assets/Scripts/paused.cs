@@ -61,7 +61,7 @@ public class paused : MonoBehaviour
         pausePanel.SetActive(true);
         pauseButton.SetActive(false);
         Enemy.speed = 0;
-
+        Enemy_1.speed = 0;
         Turret.control = false;
         EnemySpawner.control = false;
         key = 1;
@@ -72,7 +72,7 @@ public class paused : MonoBehaviour
         if (timeLeft < 0)
         {
             Enemy.speed = 10;
-
+            Enemy_1.speed = 15;
             Turret.control = true;
             EnemySpawner.control = true;
             onUnpause(); 
@@ -95,6 +95,7 @@ public class paused : MonoBehaviour
         pausePanel.SetActive(false);
         pauseButton.SetActive(true);
         Enemy.speed = 10;
+        Enemy_1.speed = 15;
         Turret.control = true;
         EnemySpawner.control = true;
         key = 0;

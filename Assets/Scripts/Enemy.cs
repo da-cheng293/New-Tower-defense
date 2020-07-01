@@ -13,16 +13,14 @@ public class Enemy : MonoBehaviour {
     private Slider hpSlider;
     private Transform[] positions;
     private int index = 0;
-    // 判断是start1 还是 start2 的路径
-    public bool firstPath = true;
 
     //public paused control_p;
 
     // Use this for initialization
     void Start () {
-        if(firstPath) positions = Waypoints.positions;
-        else positions = Waypoints_2.positions;
-        // positions = Waypoints.positions;
+        //if(firstPath) positions = Waypoints.positions;
+        //else positions = Waypoints_2.positions;
+        positions = Waypoints.positions;
         totalHp = hp;
         hpSlider = GetComponentInChildren<Slider> ();
         

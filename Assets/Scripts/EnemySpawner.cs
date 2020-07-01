@@ -6,6 +6,7 @@ public class EnemySpawner : MonoBehaviour {
 
     public static int CountEnemyAlive = 0;
     public Wave[] waves;
+    public Wave_1[] waves1;
     public Transform START1, START2;
     public float waveRate = 0.2f;
     private Coroutine coroutine;
@@ -20,23 +21,23 @@ public class EnemySpawner : MonoBehaviour {
     }
     IEnumerator SpawnEnemy()
     {
-        foreach (Wave wave in waves)
+        for(int j=0; j<waves.Length; j++)
         {
-            for (int i = 0; i < wave.count; i++)
+            for (int i = 0; i < waves[j].count; i++)
             {
-                GameObject.Instantiate(wave.enemyPrefab, START1.position, Quaternion.identity);                                
+                GameObject.Instantiate(waves[j].enemyPrefab, START1.position, Quaternion.identity);                                
                 CountEnemyAlive++;
                 if(START2!=null) {
-                    Enemy enemy = GameObject.Instantiate(wave.enemyPrefab, START2.position, Quaternion.identity);
-                    enemy.firstPath = false;
-                    Debug.Log("firstPath:" + enemy.firstPath);
+                    GameObject.Instantiate(waves1[j].enemyPrefab, START2.position, Quaternion.identity);
+                    //enemy.firstPath = false;
+                    //Debug.Log("firstPath:" + enemy.firstPath);
                     CountEnemyAlive++;
                 }                
-                if(i!=wave.count-1)
-                    yield return new WaitForSeconds(wave.rate);
+                if(i!=waves[j].count-1)
+                    yield return new WaitForSeconds(waves[j].rate);
                 while (control ==false)
                 {
-                    yield return new WaitForSeconds(wave.rate);
+                    yield return new WaitForSeconds(waves[j].rate);
                 }
             }
             while (CountEnemyAlive > 0)
