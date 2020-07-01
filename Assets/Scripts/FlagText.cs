@@ -16,7 +16,7 @@ public class FlagText : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        Debug.Log(flag.flagModel);
+        //Debug.Log(flag.flagModel);
         if (flag.flagModel == true)
         {
             message.text = "ON";

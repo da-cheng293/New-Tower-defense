@@ -12,6 +12,7 @@ public class paused : MonoBehaviour
     private float timeseconds = 30.0f;
     private int frequcies = 3;
     private bool isPause = false;
+    public bool isTwoPath;
     // private Enemy control;
     // Start is called before the first frame update
     void changetime(float changetimenumber = 0.0f)
@@ -61,7 +62,7 @@ public class paused : MonoBehaviour
         pausePanel.SetActive(true);
         pauseButton.SetActive(false);
         Enemy.speed = 0;
-        Enemy_1.speed = 0;
+        if (isTwoPath) Enemy_1.speed = 0;
         Turret.control = false;
         EnemySpawner.control = false;
         key = 1;
@@ -72,7 +73,7 @@ public class paused : MonoBehaviour
         if (timeLeft < 0)
         {
             Enemy.speed = 10;
-            Enemy_1.speed = 15;
+            if(isTwoPath) Enemy_1.speed = 15;
             Turret.control = true;
             EnemySpawner.control = true;
             onUnpause(); 
@@ -95,7 +96,7 @@ public class paused : MonoBehaviour
         pausePanel.SetActive(false);
         pauseButton.SetActive(true);
         Enemy.speed = 10;
-        Enemy_1.speed = 15;
+        if (isTwoPath) Enemy_1.speed = 15;
         Turret.control = true;
         EnemySpawner.control = true;
         key = 0;

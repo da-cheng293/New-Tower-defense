@@ -20,7 +20,7 @@ public class FlagHandler : MonoBehaviour
 
     public void setFlagModel(string inStr) {
         flagModel = !flagModel;
-        Debug.Log(flagModel);
+        //Debug.Log(flagModel);
     }
 }
     

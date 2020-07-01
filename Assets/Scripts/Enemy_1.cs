@@ -22,8 +22,8 @@ public class Enemy_1 : MonoBehaviour
     {
         //if (firstPath) positions = Waypoints.positions;
         //else positions = Waypoints_2.positions;
-        positions = Waypoints_2.positions;
-        Debug.Log("WayPoints:" + positions.Length);
+        positions = Waypoints_1.positions;
+        //Debug.Log("WayPoints:" + positions.Length);
         totalHp = hp;
         hpSlider = GetComponentInChildren<Slider>();
 

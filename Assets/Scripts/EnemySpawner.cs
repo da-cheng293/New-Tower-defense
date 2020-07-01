@@ -2,7 +2,8 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class EnemySpawner : MonoBehaviour {
+public class EnemySpawner : MonoBehaviour
+{
 
     public static int CountEnemyAlive = 0;
     public Wave[] waves;
@@ -21,21 +22,22 @@ public class EnemySpawner : MonoBehaviour {
     }
     IEnumerator SpawnEnemy()
     {
-        for(int j=0; j<waves.Length; j++)
+        for (int j = 0; j < waves.Length; j++)
         {
             for (int i = 0; i < waves[j].count; i++)
             {
-                GameObject.Instantiate(waves[j].enemyPrefab, START1.position, Quaternion.identity);                                
+                GameObject.Instantiate(waves[j].enemyPrefab, START1.position, Quaternion.identity);
                 CountEnemyAlive++;
-                if(START2!=null) {
+                if (START2 != null)
+                {
                     GameObject.Instantiate(waves1[j].enemyPrefab, START2.position, Quaternion.identity);
                     //enemy.firstPath = false;
                     //Debug.Log("firstPath:" + enemy.firstPath);
                     CountEnemyAlive++;
-                }                
-                if(i!=waves[j].count-1)
+                }
+                if (i != waves[j].count - 1)
                     yield return new WaitForSeconds(waves[j].rate);
-                while (control ==false)
+                while (control == false)
                 {
                     yield return new WaitForSeconds(waves[j].rate);
                 }
