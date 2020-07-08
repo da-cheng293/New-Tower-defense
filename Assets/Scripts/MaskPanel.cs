@@ -31,7 +31,7 @@ public class MaskPanel : MonoBehaviour
     void Start()
     {
         guideController = transform.GetComponent<GuideController>();
-        vectors = guideController.Guide(canvas, GameObject.Find("PauseButton").GetComponent<RectTransform>(), GuideType.Rect);
+        vectors = guideController.Guide(canvas, GameObject.Find("PauseButton").GetComponent<RectTransform>(), GuideType.Rect, TranslateType.Slow, 0.5f);
         //Debug.Log("1234"+GameObject.Find("/MapCube (32)").name);
         GameObject.Find("Text1").GetComponent<Text>().enabled = true;//activate current canvas
         GameObject.Find("Image1").GetComponent<Image>().enabled = true;
@@ -46,7 +46,7 @@ public class MaskPanel : MonoBehaviour
         GameObject.Find("Image1").GetComponent<Image>().enabled = false;
         GameObject.Find("Text2").GetComponent<Text>().enabled = true;//activate current canvas
         GameObject.Find("Image2").GetComponent<Image>().enabled = true;
-        vectors = guideController.Guide(canvas, GameObject.Find("Canvas1").GetComponent<RectTransform>(), GuideType.Rect, TranslateType.Slow);
+        vectors = guideController.Guide(canvas, GameObject.Find("Canvas1").GetComponent<RectTransform>(), GuideType.Rect, TranslateType.Slow, 0.5f);
         //can = new RectTransform();
         //can = GameObject.Find("Canvas1").GetComponent<RectTransform>();
 
@@ -74,7 +74,7 @@ public class MaskPanel : MonoBehaviour
 
     void Test1()
     {
-        vectors = guideController.Guide(canvas, GameObject.Find("Canvas2").GetComponent<RectTransform>(), GuideType.Rect, TranslateType.Slow);
+        vectors = guideController.Guide(canvas, GameObject.Find("Canvas2").GetComponent<RectTransform>(), GuideType.Rect, TranslateType.Slow, 0.5f);
         count = 2;
 
         GameObject.Find("Text2").GetComponent<Text>().enabled = false;//deactivate last canvas
@@ -85,7 +85,7 @@ public class MaskPanel : MonoBehaviour
     bool isFirst = true;
     void Test2()
     {
-        vectors = guideController.Guide(canvas, GameObject.Find("MissileToggle").GetComponent<RectTransform>(), GuideType.Rect, TranslateType.Slow);
+        vectors = guideController.Guide(canvas, GameObject.Find("MissileToggle").GetComponent<RectTransform>(), GuideType.Rect, TranslateType.Slow, 0.5f);
         count = 3;
         //if (isFirst)
         //{
@@ -102,7 +102,7 @@ public class MaskPanel : MonoBehaviour
 
     void Test3()
     {
-        vectors = guideController.Guide(canvas, GameObject.Find("Canvas2").GetComponent<RectTransform>(), GuideType.Rect, TranslateType.Slow);
+        vectors = guideController.Guide(canvas, GameObject.Find("Canvas2").GetComponent<RectTransform>(), GuideType.Rect, TranslateType.Slow, 0.5f);
         count = 11;
         GameObject.Find("Text4").GetComponent<Text>().enabled = false;
         GameObject.Find("Image4").GetComponent<Image>().enabled = false;
@@ -118,7 +118,7 @@ public class MaskPanel : MonoBehaviour
         GameObject.Find("Text6").GetComponent<Text>().enabled = true;
         GameObject.Find("Image6").GetComponent<Image>().enabled = true;
 
-        vectors = guideController.Guide(canvas, GameObject.Find("Canvas7").GetComponent<RectTransform>(), GuideType.Circle, TranslateType.Slow);
+        vectors = guideController.Guide(canvas, GameObject.Find("Canvas7").GetComponent<RectTransform>(), GuideType.Circle, TranslateType.Slow, 0.5f);
         count = 4;
     }
 
@@ -129,7 +129,7 @@ public class MaskPanel : MonoBehaviour
         GameObject.Find("Image6").GetComponent<Image>().enabled = false;
         GameObject.Find("Text7").GetComponent<Text>().enabled = true;
         GameObject.Find("Image7").GetComponent<Image>().enabled = true;
-        vectors = guideController.Guide(canvas, GameObject.Find("Canvas3").GetComponent<RectTransform>(), GuideType.Rect, TranslateType.Slow);
+        vectors = guideController.Guide(canvas, GameObject.Find("Canvas3").GetComponent<RectTransform>(), GuideType.Rect, TranslateType.Slow, 0.5f);
         count = 5;
         
     }
@@ -141,7 +141,7 @@ public class MaskPanel : MonoBehaviour
         GameObject.Find("Text8").GetComponent<Text>().enabled = true;
         GameObject.Find("Image8").GetComponent<Image>().enabled = true;
 
-        vectors = guideController.Guide(canvas, GameObject.Find("Canvas4").GetComponent<RectTransform>(), GuideType.Rect, TranslateType.Slow);
+        vectors = guideController.Guide(canvas, GameObject.Find("Canvas4").GetComponent<RectTransform>(), GuideType.Rect, TranslateType.Slow, 0.5f);
         count = 6;
        
     }
@@ -154,7 +154,7 @@ public class MaskPanel : MonoBehaviour
         GameObject.Find("Text9").GetComponent<Text>().enabled = true;
         GameObject.Find("Image9").GetComponent<Image>().enabled = true;
 
-        vectors = guideController.Guide(canvas, GameObject.Find("Canvas5").GetComponent<RectTransform>(), GuideType.Rect, TranslateType.Slow);
+        vectors = guideController.Guide(canvas, GameObject.Find("Canvas5").GetComponent<RectTransform>(), GuideType.Rect, TranslateType.Slow, 0.5f);
         count = 7;
         
     }
@@ -167,7 +167,7 @@ public class MaskPanel : MonoBehaviour
         GameObject.Find("Text10").GetComponent<Text>().enabled = true;
         GameObject.Find("Image10").GetComponent<Image>().enabled = true;
 
-        vectors = guideController.Guide(canvas, GameObject.Find("Canvas3").GetComponent<RectTransform>(), GuideType.Rect, TranslateType.Slow);
+        vectors = guideController.Guide(canvas, GameObject.Find("Canvas3").GetComponent<RectTransform>(), GuideType.Rect, TranslateType.Slow, 0.5f);
         count = 8;
   
     }
@@ -179,7 +179,7 @@ public class MaskPanel : MonoBehaviour
         GameObject.Find("Image10").GetComponent<Image>().enabled = false;
         GameObject.Find("Text11").GetComponent<Text>().enabled = true;// marked square has no mine, destroy
         GameObject.Find("Image11").GetComponent<Image>().enabled = true;
-        vectors = guideController.Guide(canvas, GameObject.Find("Canvas5").GetComponent<RectTransform>(), GuideType.Rect, TranslateType.Slow);
+        vectors = guideController.Guide(canvas, GameObject.Find("Canvas5").GetComponent<RectTransform>(), GuideType.Rect, TranslateType.Slow, 0.5f);
         count = 9;
     }
 
@@ -190,7 +190,7 @@ public class MaskPanel : MonoBehaviour
         GameObject.Find("Text12").GetComponent<Text>().enabled = true;// otherwise, upgrade
         GameObject.Find("Image12").GetComponent<Image>().enabled = true;
 
-        vectors = guideController.Guide(canvas, GameObject.Find("Canvas4").GetComponent<RectTransform>(), GuideType.Rect, TranslateType.Slow);
+        vectors = guideController.Guide(canvas, GameObject.Find("Canvas4").GetComponent<RectTransform>(), GuideType.Rect, TranslateType.Slow, 0.5f);
         count = 10;
         
     }
@@ -202,7 +202,7 @@ public class MaskPanel : MonoBehaviour
         GameObject.Find("Text13").GetComponent<Text>().enabled = true;// otherwise, upgrade
         GameObject.Find("Image13").GetComponent<Image>().enabled = true;
 
-        vectors = guideController.Guide(canvas, GameObject.Find("Canvas6").GetComponent<RectTransform>(), GuideType.Rect, TranslateType.Slow);
+        vectors = guideController.Guide(canvas, GameObject.Find("Canvas6").GetComponent<RectTransform>(), GuideType.Rect, TranslateType.Slow, 0.5f);
 
         count = 12;
     }
@@ -213,7 +213,7 @@ public class MaskPanel : MonoBehaviour
     {
         GameObject.Find("Text13").GetComponent<Text>().enabled = false;// otherwise, upgrade
         GameObject.Find("Image13").GetComponent<Image>().enabled = false;
-        vectors = guideController.Guide(canvas, GameObject.Find("Canvas8").GetComponent<RectTransform>(), GuideType.Circle, TranslateType.Slow);
+        vectors = guideController.Guide(canvas, GameObject.Find("Canvas8").GetComponent<RectTransform>(), GuideType.Circle, TranslateType.Slow, 0.5f);
 
         GameObject.Find("Text14").GetComponent<Text>().enabled = true;
         GameObject.Find("Image14").GetComponent<Image>().enabled = true;
@@ -224,7 +224,7 @@ public class MaskPanel : MonoBehaviour
     {
         GameObject.Find("Text14").GetComponent<Text>().enabled = false;
         GameObject.Find("Image14").GetComponent<Image>().enabled = false;
-        vectors = guideController.Guide(canvas, GameObject.Find("Canvas9").GetComponent<RectTransform>(), GuideType.Circle, TranslateType.Slow);
+        vectors = guideController.Guide(canvas, GameObject.Find("Canvas9").GetComponent<RectTransform>(), GuideType.Circle, TranslateType.Slow, 0.5f);
         count = 14;
         GameObject.Find("Text15").GetComponent<Text>().enabled = true;
         GameObject.Find("Image15").GetComponent<Image>().enabled = true;
@@ -234,7 +234,7 @@ public class MaskPanel : MonoBehaviour
     {
         GameObject.Find("Text15").GetComponent<Text>().enabled = false;
         GameObject.Find("Image15").GetComponent<Image>().enabled = false;
-        vectors = guideController.Guide(canvas, GameObject.Find("Canvas10").GetComponent<RectTransform>(), GuideType.Circle, TranslateType.Slow);
+        vectors = guideController.Guide(canvas, GameObject.Find("Canvas10").GetComponent<RectTransform>(), GuideType.Circle, TranslateType.Slow, 0.5f);
 
 
         GameObject.Find("Text16").GetComponent<Text>().enabled = true;
