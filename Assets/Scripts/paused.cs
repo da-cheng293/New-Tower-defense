@@ -6,12 +6,12 @@ public class paused : MonoBehaviour
 {
     public GameObject pauseButton, pausePanel, pauseest;
     float timeLeft = 30.0f;
-    float key = 0;
+    public static float key = 0;
     public Text timeremain;
     public Text remainfrequency;
     private float timeseconds = 30.0f;
     private int frequcies = 3;
-    private bool isPause = false;
+    public bool isPause = false;
     public bool isTwoPath;
     // private Enemy control;
     // Start is called before the first frame update

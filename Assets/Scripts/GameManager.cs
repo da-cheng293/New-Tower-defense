@@ -8,9 +8,10 @@ public class GameManager : MonoBehaviour {
 
     public GameObject endUI;
     public Text endMessage;
-
+    //public bool isTwoPath;
     public static GameManager Instance;
     private EnemySpawner enemySpawner;
+    
     void Awake()
     {
         Instance = this;
@@ -35,6 +36,12 @@ public class GameManager : MonoBehaviour {
     }
     public void OnButtonMenu()
     {
+        Enemy.speed = 10;
+        Enemy_1.speed = 15;
+        Turret.control = true;
+        EnemySpawner.control = true;
+        paused.key = 0;
+       // paused.isPause = false;
         SceneManager.LoadScene(0);
     }
 }
