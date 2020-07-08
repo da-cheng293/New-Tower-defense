@@ -1,6 +1,9 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
+
+
 
 public class MaskPanel : MonoBehaviour
 {
@@ -12,6 +15,11 @@ public class MaskPanel : MonoBehaviour
     Vector3[] vectors;
  
     Vector2 curVector;
+    //RectTransform can;
+
+    //RectTransform rectTransform;
+
+    //public Text explainText;
 
     int count = 0;
     private void Awake()
@@ -25,6 +33,8 @@ public class MaskPanel : MonoBehaviour
         guideController = transform.GetComponent<GuideController>();
         vectors = guideController.Guide(canvas, GameObject.Find("PauseButton").GetComponent<RectTransform>(), GuideType.Rect);
         //Debug.Log("1234"+GameObject.Find("/MapCube (32)").name);
+        GameObject.Find("Text1").GetComponent<Text>().enabled = true;//activate current canvas
+        GameObject.Find("Image1").GetComponent<Image>().enabled = true;
         //Invoke("Test", 1);
         //count++;
         //Debug.Log("1:" + vectors[0] + "2:" + vectors[1] + "3:" + vectors[2] + "4:" + vectors[3]);
@@ -32,20 +42,50 @@ public class MaskPanel : MonoBehaviour
 
     void Test()
     {
-        vectors = guideController.Guide(canvas, GameObject.Find("Canvas1").GetComponent<RectTransform>(), GuideType.Rect, TranslateType.Slow, 0.2f);
+        GameObject.Find("Text1").GetComponent<Text>().enabled = false;//activate current canvas
+        GameObject.Find("Image1").GetComponent<Image>().enabled = false;
+        GameObject.Find("Text2").GetComponent<Text>().enabled = true;//activate current canvas
+        GameObject.Find("Image2").GetComponent<Image>().enabled = true;
+        vectors = guideController.Guide(canvas, GameObject.Find("Canvas1").GetComponent<RectTransform>(), GuideType.Rect, TranslateType.Slow);
+        //can = new RectTransform();
+        //can = GameObject.Find("Canvas1").GetComponent<RectTransform>();
+
+        //can.GetComponent<Text>().text = "Paused";
+        //myText = new GameObject();
+        //myText.transform.parent = can.transform;
+        //myText.name = "wibble";
+
+
+        //text = myText.AddComponent<Text>();
+        //text.font = (Font)Resources.Load("MyFont");
+        //text.text = "wobble";
+        //text.fontSize = 100;
+
+        // Text position
+        //rectTransform = text.GetComponent<RectTransform>();
+        //rectTransform.localPosition = new Vector3(0, 0, 0);
+        //rectTransform.sizeDelta = new Vector2(400, 200);
+
         count = 1;
-        //Debug.Log("----"+count);
+        Debug.Log("Hereeee");
+
+        
     }
 
     void Test1()
     {
-        vectors = guideController.Guide(canvas, GameObject.Find("Canvas2").GetComponent<RectTransform>(), GuideType.Rect, TranslateType.Slow, 0.2f);
+        vectors = guideController.Guide(canvas, GameObject.Find("Canvas2").GetComponent<RectTransform>(), GuideType.Rect, TranslateType.Slow);
         count = 2;
+
+        GameObject.Find("Text2").GetComponent<Text>().enabled = false;//deactivate last canvas
+        GameObject.Find("Image2").GetComponent<Image>().enabled = false;
+        GameObject.Find("Text3").GetComponent<Text>().enabled = true;//activate current canvas
+        GameObject.Find("Image3").GetComponent<Image>().enabled = true;
     }
     bool isFirst = true;
     void Test2()
     {
-        vectors = guideController.Guide(canvas, GameObject.Find("MissileToggle").GetComponent<RectTransform>(), GuideType.Rect, TranslateType.Slow, 0.2f);
+        vectors = guideController.Guide(canvas, GameObject.Find("MissileToggle").GetComponent<RectTransform>(), GuideType.Rect, TranslateType.Slow);
         count = 3;
         //if (isFirst)
         //{
@@ -54,78 +94,151 @@ public class MaskPanel : MonoBehaviour
         //    Panel.transform.parent = transform;
         //    isFirst = false;
         //}
+        GameObject.Find("Text3").GetComponent<Text>().enabled = false;//deactivate last canvas
+        GameObject.Find("Image3").GetComponent<Image>().enabled = false;//activate current canvas
+        GameObject.Find("Text4").GetComponent<Text>().enabled = true;
+        GameObject.Find("Image4").GetComponent<Image>().enabled = true;
     }
 
     void Test3()
     {
-        vectors = guideController.Guide(canvas, GameObject.Find("Canvas2").GetComponent<RectTransform>(), GuideType.Rect, TranslateType.Slow, 0.2f);
+        vectors = guideController.Guide(canvas, GameObject.Find("Canvas2").GetComponent<RectTransform>(), GuideType.Rect, TranslateType.Slow);
         count = 11;
+        GameObject.Find("Text4").GetComponent<Text>().enabled = false;
+        GameObject.Find("Image4").GetComponent<Image>().enabled = false;
+        GameObject.Find("Text5").GetComponent<Text>().enabled = true;
+        GameObject.Find("Image5").GetComponent<Image>().enabled = true;
     }
+
+
+    void TestCircle()
+    {
+        GameObject.Find("Text5").GetComponent<Text>().enabled = false;
+        GameObject.Find("Image5").GetComponent<Image>().enabled = false;
+        GameObject.Find("Text6").GetComponent<Text>().enabled = true;
+        GameObject.Find("Image6").GetComponent<Image>().enabled = true;
+
+        vectors = guideController.Guide(canvas, GameObject.Find("Canvas7").GetComponent<RectTransform>(), GuideType.Circle, TranslateType.Slow);
+        count = 4;
+    }
+
 
     void Test4()
     {
-        vectors = guideController.Guide(canvas, GameObject.Find("Canvas3").GetComponent<RectTransform>(), GuideType.Rect, TranslateType.Slow, 0.2f);
+        GameObject.Find("Text6").GetComponent<Text>().enabled = false;
+        GameObject.Find("Image6").GetComponent<Image>().enabled = false;
+        GameObject.Find("Text7").GetComponent<Text>().enabled = true;
+        GameObject.Find("Image7").GetComponent<Image>().enabled = true;
+        vectors = guideController.Guide(canvas, GameObject.Find("Canvas3").GetComponent<RectTransform>(), GuideType.Rect, TranslateType.Slow);
         count = 5;
+        
     }
 
     void Test5()
     {
-        vectors = guideController.Guide(canvas, GameObject.Find("Canvas4").GetComponent<RectTransform>(), GuideType.Rect, TranslateType.Slow, 0.2f);
+        GameObject.Find("Text7").GetComponent<Text>().enabled = false;
+        GameObject.Find("Image7").GetComponent<Image>().enabled = false;
+        GameObject.Find("Text8").GetComponent<Text>().enabled = true;
+        GameObject.Find("Image8").GetComponent<Image>().enabled = true;
+
+        vectors = guideController.Guide(canvas, GameObject.Find("Canvas4").GetComponent<RectTransform>(), GuideType.Rect, TranslateType.Slow);
         count = 6;
+       
     }
 
     void Test6()
     {
-        vectors = guideController.Guide(canvas, GameObject.Find("Canvas5").GetComponent<RectTransform>(), GuideType.Rect, TranslateType.Slow, 0.2f);
+        GameObject.Find("Text8").GetComponent<Text>().enabled = false;
+        GameObject.Find("Image8").GetComponent<Image>().enabled = false;
+
+        GameObject.Find("Text9").GetComponent<Text>().enabled = true;
+        GameObject.Find("Image9").GetComponent<Image>().enabled = true;
+
+        vectors = guideController.Guide(canvas, GameObject.Find("Canvas5").GetComponent<RectTransform>(), GuideType.Rect, TranslateType.Slow);
         count = 7;
+        
     }
 
     void Test7()
     {
-        vectors = guideController.Guide(canvas, GameObject.Find("Canvas3").GetComponent<RectTransform>(), GuideType.Rect, TranslateType.Slow, 0.2f);
+        GameObject.Find("Text9").GetComponent<Text>().enabled = false;
+        GameObject.Find("Image9").GetComponent<Image>().enabled = false;
+
+        GameObject.Find("Text10").GetComponent<Text>().enabled = true;
+        GameObject.Find("Image10").GetComponent<Image>().enabled = true;
+
+        vectors = guideController.Guide(canvas, GameObject.Find("Canvas3").GetComponent<RectTransform>(), GuideType.Rect, TranslateType.Slow);
         count = 8;
+  
     }
     //没钱
 
     void Test8()
     {
-        vectors = guideController.Guide(canvas, GameObject.Find("Canvas5").GetComponent<RectTransform>(), GuideType.Rect, TranslateType.Slow, 0.2f);
+        GameObject.Find("Text10").GetComponent<Text>().enabled = false;
+        GameObject.Find("Image10").GetComponent<Image>().enabled = false;
+        GameObject.Find("Text11").GetComponent<Text>().enabled = true;// marked square has no mine, destroy
+        GameObject.Find("Image11").GetComponent<Image>().enabled = true;
+        vectors = guideController.Guide(canvas, GameObject.Find("Canvas5").GetComponent<RectTransform>(), GuideType.Rect, TranslateType.Slow);
         count = 9;
     }
 
     void Test9()
     {
-        vectors = guideController.Guide(canvas, GameObject.Find("Canvas4").GetComponent<RectTransform>(), GuideType.Rect, TranslateType.Slow, 0.2f);
+        GameObject.Find("Text11").GetComponent<Text>().enabled = false;// marked square has no mine, destroy
+        GameObject.Find("Image11").GetComponent<Image>().enabled = false;
+        GameObject.Find("Text12").GetComponent<Text>().enabled = true;// otherwise, upgrade
+        GameObject.Find("Image12").GetComponent<Image>().enabled = true;
+
+        vectors = guideController.Guide(canvas, GameObject.Find("Canvas4").GetComponent<RectTransform>(), GuideType.Rect, TranslateType.Slow);
         count = 10;
+        
     }
 
     void Test10()
     {
-        vectors = guideController.Guide(canvas, GameObject.Find("Canvas6").GetComponent<RectTransform>(), GuideType.Rect, TranslateType.Slow, 0.2f);
+        GameObject.Find("Text12").GetComponent<Text>().enabled = false;// otherwise, upgrade
+        GameObject.Find("Image12").GetComponent<Image>().enabled = false;
+        GameObject.Find("Text13").GetComponent<Text>().enabled = true;// otherwise, upgrade
+        GameObject.Find("Image13").GetComponent<Image>().enabled = true;
+
+        vectors = guideController.Guide(canvas, GameObject.Find("Canvas6").GetComponent<RectTransform>(), GuideType.Rect, TranslateType.Slow);
+
         count = 12;
     }
 
-    void TestCircle()
-    {
-        vectors = guideController.Guide(canvas, GameObject.Find("Canvas7").GetComponent<RectTransform>(), GuideType.Circle, TranslateType.Slow, 0.2f);
-        count = 4;
-    }
+   
 
     void TestCircle1()
     {
-        vectors = guideController.Guide(canvas, GameObject.Find("Canvas8").GetComponent<RectTransform>(), GuideType.Circle, TranslateType.Slow, 0.2f);
+        GameObject.Find("Text13").GetComponent<Text>().enabled = false;// otherwise, upgrade
+        GameObject.Find("Image13").GetComponent<Image>().enabled = false;
+        vectors = guideController.Guide(canvas, GameObject.Find("Canvas8").GetComponent<RectTransform>(), GuideType.Circle, TranslateType.Slow);
+
+        GameObject.Find("Text14").GetComponent<Text>().enabled = true;
+        GameObject.Find("Image14").GetComponent<Image>().enabled = true;
         count = 13;
     }
 
     void TestCircle2()
     {
-        vectors = guideController.Guide(canvas, GameObject.Find("Canvas9").GetComponent<RectTransform>(), GuideType.Circle, TranslateType.Slow, 0.2f);
+        GameObject.Find("Text14").GetComponent<Text>().enabled = false;
+        GameObject.Find("Image14").GetComponent<Image>().enabled = false;
+        vectors = guideController.Guide(canvas, GameObject.Find("Canvas9").GetComponent<RectTransform>(), GuideType.Circle, TranslateType.Slow);
         count = 14;
+        GameObject.Find("Text15").GetComponent<Text>().enabled = true;
+        GameObject.Find("Image15").GetComponent<Image>().enabled = true;
     }
 
     void TestCircle3()
     {
-        vectors = guideController.Guide(canvas, GameObject.Find("Canvas10").GetComponent<RectTransform>(), GuideType.Circle, TranslateType.Slow, 0.2f);
+        GameObject.Find("Text15").GetComponent<Text>().enabled = false;
+        GameObject.Find("Image15").GetComponent<Image>().enabled = false;
+        vectors = guideController.Guide(canvas, GameObject.Find("Canvas10").GetComponent<RectTransform>(), GuideType.Circle, TranslateType.Slow);
+
+
+        GameObject.Find("Text16").GetComponent<Text>().enabled = true;
+        GameObject.Find("Image16").GetComponent<Image>().enabled = true;
         count = 15;
     }
 
@@ -200,6 +313,8 @@ public class MaskPanel : MonoBehaviour
             if (count == 15)
             {
                 Destroy(this.gameObject);
+                GameObject.Find("Text16").GetComponent<Text>().enabled = false;
+                GameObject.Find("Image16").GetComponent<Image>().enabled = false;
             }
 
 
