@@ -294,7 +294,7 @@ public class MaskPanel : MonoBehaviour
             {
                 Invoke("Test10", 0.5f);
             }
-            if (count == 11)
+            if (count == 11 && isInArea())
             {
                 Invoke("TestCircle", 0.5f);
             }
