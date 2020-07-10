@@ -7,6 +7,7 @@ public class Turret : MonoBehaviour {
     private List<GameObject> enemys = new List<GameObject>();
     void OnTriggerEnter(Collider col)
     {
+        //Debug.Log("111" + col.gameObject.GetComponent<Enemy>());
         if (col.tag == "Enemy")
         {
             enemys.Add(col.gameObject);
@@ -73,9 +74,16 @@ public class Turret : MonoBehaviour {
             }
             if (enemys.Count > 0)
             {
-                laserRenderer.SetPositions(new Vector3[]{firePosition.position, enemys[0].transform.position});
+                laserRenderer.SetPositions(new Vector3[] { firePosition.position, enemys[0].transform.position });
                 Debug.Log(damageRate);
-                enemys[0].GetComponent<Enemy>().TakeDamage(damageRate *Time.deltaTime );
+                if (enemys[0].GetComponent<Enemy>() != null)
+                {
+                    enemys[0].GetComponent<Enemy>().TakeDamage(damageRate * Time.deltaTime);
+                } else
+                {
+                    enemys[0].GetComponent<Enemy_1>().TakeDamage(damageRate * Time.deltaTime);
+                }                
+                  
                 laserEffect.transform.position = enemys[0].transform.position;
                 Vector3 pos = transform.position;
                 pos.y = enemys[0].transform.position.y;
@@ -98,7 +106,14 @@ public class Turret : MonoBehaviour {
         if (enemys.Count > 0)
         {
             GameObject bullet = GameObject.Instantiate(bulletPrefab, firePosition.position, firePosition.rotation);
-            bullet.GetComponent<Bullet>().SetTarget(enemys[0].transform, useMissile);
+            if (enemys[0].GetComponent<Enemy>() != null)
+            {
+                bullet.GetComponent<Bullet>().SetTarget(enemys[0].transform, useMissile, true);
+            }
+            else
+            {
+                bullet.GetComponent<Bullet>().SetTarget(enemys[0].transform, useMissile, false);
+            }                                            
         }
         else
         {

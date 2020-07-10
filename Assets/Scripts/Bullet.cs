@@ -16,10 +16,13 @@ public class Bullet : MonoBehaviour {
 
     private bool useMissile;
 
-    public void SetTarget(Transform _target, bool useMissile)
+    private bool isEnemy;
+
+    public void SetTarget(Transform _target, bool useMissile, bool isEnemy)
     {
         this.target = _target;
         this.useMissile = useMissile;
+        this.isEnemy = isEnemy;
     }
 
     void Update()
@@ -37,7 +40,15 @@ public class Bullet : MonoBehaviour {
         if (dir.magnitude < distanceArriveTarget)
         {
             if (useMissile) damage *= 2;
-            target.GetComponent<Enemy>().TakeDamage(damage);
+            if (isEnemy)
+            {
+                target.GetComponent<Enemy>().TakeDamage(damage);
+            }
+            else
+            {
+                target.GetComponent<Enemy_1>().TakeDamage(damage);
+            }
+            
             Die();   
         }
     }
