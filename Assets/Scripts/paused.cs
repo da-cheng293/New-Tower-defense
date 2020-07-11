@@ -13,8 +13,10 @@ public class paused : MonoBehaviour
     private int frequcies = 3;
     public bool isPause = false;
     public bool isTwoPath;
+    public AudioSource panelAudio;
     // private Enemy control;
     // Start is called before the first frame update
+
     void changetime(float changetimenumber = 0.0f)
     {
         timeseconds -= changetimenumber;
@@ -40,6 +42,7 @@ public class paused : MonoBehaviour
     }
     public void Start()
     {
+        panelAudio = GameObject.Find("Pause_audio").GetComponent<AudioSource>();
         //changetime(-1);
         timeseconds = 30.0f;
         frequcies = 3;
@@ -72,8 +75,8 @@ public class paused : MonoBehaviour
         isPause = true;
         if (timeLeft < 0)
         {
-            Enemy.speed = 10;
-            if(isTwoPath) Enemy_1.speed = 15;
+            Enemy.speed = 9;
+            if(isTwoPath) Enemy_1.speed = 6;
             Turret.control = true;
             EnemySpawner.control = true;
             onUnpause(); 
@@ -81,6 +84,7 @@ public class paused : MonoBehaviour
     }
     public void onUnpause()
     {
+        panelAudio.Play();
         // changefrequency(-1);
         timeseconds = 30.0f;
         //frequcies = frequcies-1;
@@ -95,8 +99,8 @@ public class paused : MonoBehaviour
         }
         pausePanel.SetActive(false);
         pauseButton.SetActive(true);
-        Enemy.speed = 10;
-        if (isTwoPath) Enemy_1.speed = 15;
+        Enemy.speed = 9;
+        if (isTwoPath) Enemy_1.speed = 6;
         Turret.control = true;
         EnemySpawner.control = true;
         key = 0;

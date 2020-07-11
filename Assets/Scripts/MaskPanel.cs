@@ -21,9 +21,13 @@ public class MaskPanel : MonoBehaviour
 
     //public Text explainText;
 
+    private AudioSource clickAudio;
+    private bool isFirst1 = true, isFirst2 = true, isFirst3 = true, isFirst4 = true, isFirst5 = true;
+
     int count = 0;
     private void Awake()
     {
+        clickAudio = GameObject.Find("MenuClick_audio").GetComponent<AudioSource>();
         canvas = transform.GetComponentInParent<Canvas>();
     }
 
@@ -268,6 +272,11 @@ public class MaskPanel : MonoBehaviour
             }
             if (count == 4)
             {
+                if (isFirst)
+                {
+                    clickAudio.Play();
+                    isFirst = false;
+                }
                 Invoke("Test4", 0.5f);
             }
             if (count == 5 && isInArea())
@@ -300,18 +309,38 @@ public class MaskPanel : MonoBehaviour
             }
             if (count == 12)
             {
+                if (isFirst2)
+                {
+                    clickAudio.Play();
+                    isFirst2 = false;
+                }
                 Invoke("TestCircle1", 0.5f);
             }
             if (count == 13)
             {
+                if (isFirst3)
+                {
+                    clickAudio.Play();
+                    isFirst3 = false;
+                }
                 Invoke("TestCircle2", 0.5f);
             }
             if (count == 14)
             {
+                if (isFirst4)
+                {
+                    clickAudio.Play();
+                    isFirst4 = false;
+                }
                 Invoke("TestCircle3", 0.5f);
             }
             if (count == 15)
             {
+                if (isFirst5)
+                {
+                    clickAudio.Play();
+                    isFirst5 = false;
+                }                
                 Destroy(this.gameObject);
                 GameObject.Find("Text16").GetComponent<Text>().enabled = false;
                 GameObject.Find("Image16").GetComponent<Image>().enabled = false;

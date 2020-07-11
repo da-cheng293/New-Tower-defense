@@ -41,6 +41,8 @@ public class BuildManager : MonoBehaviour {
     public Text mineText;
     public int mineNum = 18;
 
+    private AudioSource MineAudio;
+
     //更改地雷数量
     public void ChangeMine(int change = 0)
     {
@@ -65,6 +67,7 @@ public class BuildManager : MonoBehaviour {
 
     void Start()
     {
+        MineAudio = GameObject.Find("Money_audio").GetComponent<AudioSource>();
         upgradeCanvasAnimator = upgradeCanvas.GetComponent<Animator>();
     }
 
@@ -105,6 +108,7 @@ public class BuildManager : MonoBehaviour {
                         }
                         else
                         {
+                            MineAudio.Play();
                             //提示钱不够
                             moneyAnimator.SetTrigger("Flicker");
                         }
@@ -126,6 +130,7 @@ public class BuildManager : MonoBehaviour {
                             }
                             else
                             {
+                                MineAudio.Play();
                                 //提示钱不够
                                 moneyAnimator.SetTrigger("Flicker");
                             }
@@ -140,6 +145,7 @@ public class BuildManager : MonoBehaviour {
                             }
                             else
                             {
+                                MineAudio.Play();
                                 //提示钱不够
                                 moneyAnimator.SetTrigger("Flicker");
                             }
@@ -155,6 +161,7 @@ public class BuildManager : MonoBehaviour {
                         }
                         else
                         {
+                            MineAudio.Play();
                             //提示钱不够
                             moneyAnimator.SetTrigger("Flicker");
                         }

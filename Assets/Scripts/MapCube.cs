@@ -22,11 +22,22 @@ public class MapCube : MonoBehaviour {
     public GameObject myFlagModel;
     public GameObject buildEffect;
 
+    public AudioSource MineAudio;
+    public AudioSource FlipAudio;
+    public AudioSource UpgradeAudio;
+    public AudioSource FlagAudio;
+    public AudioSource BuildeAudio;
+
     private Renderer renderer;
 
     void Start()
     {
         renderer = GetComponent<Renderer>();
+        MineAudio = GameObject.Find("Mine_audio").GetComponent<AudioSource>();
+        FlipAudio = GameObject.Find("Flip_audio").GetComponent<AudioSource>();
+        UpgradeAudio = GameObject.Find("Upgrade_audio").GetComponent<AudioSource>();
+        FlagAudio = GameObject.Find("FlagPut_audio").GetComponent<AudioSource>();
+        BuildeAudio = GameObject.Find("Build_audio").GetComponent<AudioSource>();                
     }
 
     public void BuildTurret(TurretData turretData)
@@ -44,7 +55,7 @@ public class MapCube : MonoBehaviour {
 
             }
 
-
+            BuildeAudio.Play();
             this.turretData = turretData;
             isUpgraded = false;
             turretGo = GameObject.Instantiate(turretData.turretPrefab, transform.position, Quaternion.identity);
@@ -65,6 +76,7 @@ public class MapCube : MonoBehaviour {
             myFlagModel = Instantiate(tempFlag, mapCube.transform.position, mapCube.transform.rotation);
             //this.myFlagModel = tempFlag;
             myFlagModel.transform.parent = transform;
+            FlagAudio.Play();
         }
 
     }
@@ -167,6 +179,7 @@ public class MapCube : MonoBehaviour {
                 //Debug.Log(mapCube.transform.rotation);
                 GameObject selectedNumberData = (GameObject)Resources.Load("One");
                 Instantiate(selectedNumberData, mapCube.transform.position, mapCube.transform.rotation);
+                FlipAudio.Play();
             }
             // 发现MapCube是two
             else if (mapCube.name.Equals("MapCube2"))
@@ -175,6 +188,7 @@ public class MapCube : MonoBehaviour {
                 Debug.Log("在" + mapCube.name + "发现MapCube是two");
                 GameObject selectedNumberData = (GameObject)Resources.Load("Two");
                 Instantiate(selectedNumberData, mapCube.transform.position, mapCube.transform.rotation);
+                FlipAudio.Play();
             }
             // 发现MapCube是three
             else if (mapCube.name.Equals("MapCube3"))
@@ -183,6 +197,7 @@ public class MapCube : MonoBehaviour {
                 Debug.Log("在" + mapCube.name + "发现MapCube是three");
                 GameObject selectedNumberData = (GameObject)Resources.Load("Three");
                 Instantiate(selectedNumberData, mapCube.transform.position, mapCube.transform.rotation);
+                FlipAudio.Play();
             }
             // 发现MapCube是four
             else if (mapCube.name.Equals("MapCube4"))
@@ -191,14 +206,16 @@ public class MapCube : MonoBehaviour {
                 Debug.Log("在" + mapCube.name + "发现MapCube是four");
                 GameObject selectedNumberData = (GameObject)Resources.Load("Four");
                 Instantiate(selectedNumberData, mapCube.transform.position, mapCube.transform.rotation);
+                FlipAudio.Play();
             }
             // 发现MapCube是雷
             else if (mapCube.name.Equals("MapCubeM"))
-            {
+            {                                                              
                 isMine = true;
                 Debug.Log("在" + mapCube.name + "发现MapCube是雷");
                 GameObject selectedNumberData = (GameObject)Resources.Load("Mine1");
                 Instantiate(selectedNumberData, mapCube.transform.position, mapCube.transform.rotation);
+                MineAudio.Play();
             }
             // 发现MapCube是bonus
 
@@ -208,6 +225,7 @@ public class MapCube : MonoBehaviour {
                 Debug.Log("在" + mapCube.name + "发现MapCube是空");
                 GameObject selectedNumberData = (GameObject)Resources.Load("Null");
                 Instantiate(selectedNumberData, mapCube.transform.position, mapCube.transform.rotation);
+                FlipAudio.Play();
             }
             
 
@@ -223,6 +241,7 @@ public class MapCube : MonoBehaviour {
     //在bonus点上建立Tower
     public void BonusTurret(TurretData turretData)
     {
+        UpgradeAudio.Play();
         //Debug.Log("123");
         this.turretData = turretData;
         isUpgraded = true;
@@ -232,11 +251,11 @@ public class MapCube : MonoBehaviour {
     }
 
     public void BuildWrong(MapCube mapCube)
-    {
+    {                 
         mapCube.DestroyFlag();
         GameObject selectedNumberData = (GameObject)Resources.Load("Mine");
         Instantiate(selectedNumberData, mapCube.transform.position, mapCube.transform.rotation);
-
+        MineAudio.Play();
     }
 
     public void UpgradeTurret()

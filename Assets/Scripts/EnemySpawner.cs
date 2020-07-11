@@ -15,6 +15,8 @@ public class EnemySpawner : MonoBehaviour
     void Start()
     {
         coroutine = StartCoroutine(SpawnEnemy());
+        //GameManager.Instance.Win();
+        //GameManager.Instance.Failed();
     }
     public void Stop()
     {
