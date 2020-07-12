@@ -22,7 +22,7 @@ public class MaskPanel : MonoBehaviour
     //public Text explainText;
 
     private AudioSource clickAudio;
-    private bool isFirst1 = true, isFirst2 = true, isFirst3 = true, isFirst4 = true, isFirst5 = true;
+    private bool isFirst1 = true, isFirst2 = true, isFirst3 = true, isFirst4 = true, isFirst5 = true, isFirst6 = true;
 
     int count = 0;
     private void Awake()
@@ -246,6 +246,19 @@ public class MaskPanel : MonoBehaviour
         count = 15;
     }
 
+    void TestCircle4()
+    {
+        GameObject.Find("Text16").GetComponent<Text>().enabled = false;
+        GameObject.Find("Image16").GetComponent<Image>().enabled = false;
+        vectors = guideController.Guide(canvas, GameObject.Find("Canvas11").GetComponent<RectTransform>(), GuideType.Circle, TranslateType.Slow, 0.5f);
+
+
+        GameObject.Find("Text17").GetComponent<Text>().enabled = true;
+        GameObject.Find("Image17").GetComponent<Image>().enabled = true;
+        count = 16;
+    }
+
+
     // Update is called once per frame
     void Update()
     {
@@ -340,10 +353,21 @@ public class MaskPanel : MonoBehaviour
                 {
                     clickAudio.Play();
                     isFirst5 = false;
-                }                
+                }
+                Invoke("TestCircle4", 0.5f);
+            }
+            if(count == 16)
+            {
+                if (isFirst6)
+                {
+                    clickAudio.Play();
+                    isFirst6 = false;
+                }
+                GameObject.Find("Text17").GetComponent<Text>().enabled = false;
+                GameObject.Find("Image17").GetComponent<Image>().enabled = false;
+                
                 Destroy(this.gameObject);
-                GameObject.Find("Text16").GetComponent<Text>().enabled = false;
-                GameObject.Find("Image16").GetComponent<Image>().enabled = false;
+                
             }
 
 
