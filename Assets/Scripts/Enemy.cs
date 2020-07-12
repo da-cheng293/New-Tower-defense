@@ -35,7 +35,12 @@ public class Enemy : MonoBehaviour {
 
     void Move () {
         if (index > positions.Length - 1) return;
-        transform.Translate ((positions[index].position - transform.position).normalized * Time.deltaTime * speed);
+        //transform.Translate ((positions[index].position - transform.position).normalized * Time.deltaTime * speed);
+        //Transform tr = FindChild(this.transform, "Slider");
+        //Debug.Log(Vector3.forward);
+        transform.Translate(Vector3.forward * Time.deltaTime * speed);
+        transform.forward = positions[index].position - transform.position;
+
         if (Time.deltaTime * speed >= Vector3.Distance (transform.position, positions[index].position)) {
             index++;
         } else if (Vector3.Distance (positions[index].position, transform.position) < 0.2f) {

@@ -40,7 +40,10 @@ public class Enemy_1 : MonoBehaviour
     void Move()
     {
         if (index > positions.Length - 1) return;
-        transform.Translate((positions[index].position - transform.position).normalized * Time.deltaTime * speed);
+        //transform.Translate((positions[index].position - transform.position).normalized * Time.deltaTime * speed);
+        //Debug.Log(Vector3.forward);
+        transform.Translate(Vector3.forward * Time.deltaTime * speed);
+        transform.forward = positions[index].position - transform.position;
         if (Time.deltaTime * speed >= Vector3.Distance(transform.position, positions[index].position))
         {
             index++;
