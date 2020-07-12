@@ -50,7 +50,7 @@ public class BuildManager : MonoBehaviour {
         mineNum += change;
         if (mineNum <= 0)
         {
-            mineText.text = "Mine: \nEmpty";
+            mineText.text = "Mine: \n0";
         }
         else
         {

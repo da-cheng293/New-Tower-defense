@@ -39,7 +39,7 @@ public class Bullet : MonoBehaviour {
         Vector3 dir = target.position - transform.position;
         if (dir.magnitude < distanceArriveTarget)
         {
-            if (useMissile) damage *= 2;
+            if (useMissile) damage = 90;
             if (isEnemy)
             {
                 target.GetComponent<Enemy>().TakeDamage(damage);

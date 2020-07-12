@@ -10,7 +10,7 @@ public class paused : MonoBehaviour
     public Text timeremain;
     public Text remainfrequency;
     private float timeseconds = 30.0f;
-    private int frequcies = 3;
+    private int frequcies = 4;
     public bool isPause = false;
     public bool isTwoPath;
     public AudioSource panelAudio;
@@ -45,7 +45,7 @@ public class paused : MonoBehaviour
         panelAudio = GameObject.Find("Pause_audio").GetComponent<AudioSource>();
         //changetime(-1);
         timeseconds = 30.0f;
-        frequcies = 3;
+        frequcies = 4;
         // onUnpause();
     }
     void Update()
