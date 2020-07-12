@@ -83,7 +83,7 @@ public class GameManager : MonoBehaviour {
         Enemy_1.speed = 6;
         Turret.control = true;
         EnemySpawner.control = true;
-        paused.key = 0;
+        Paused.key = 0;
        // paused.isPause = false;
         SceneManager.LoadScene(0);
     }

@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
-public class paused : MonoBehaviour
+public class Paused : MonoBehaviour
 {
     public GameObject pauseButton, pausePanel, pauseest;
     float timeLeft = 30.0f;
@@ -20,13 +20,13 @@ public class paused : MonoBehaviour
     void changetime(float changetimenumber = 0.0f)
     {
         timeseconds -= changetimenumber;
-        Debug.Log("timeseconds: " + timeseconds);
+        //Debug.Log("timeseconds: " + timeseconds);
         if (timeseconds < 0)
         {
             timeseconds = 0;
         }
         timeremain.text = "Time:" + " " + Mathf.FloorToInt(timeseconds % 60f).ToString("00") + "s";
-        Debug.Log("text: " + timeremain.text);
+        //Debug.Log("text: " + timeremain.text);
     }
 
     void changefrequency(int changefreqnumber = 0)
@@ -95,7 +95,7 @@ public class paused : MonoBehaviour
             pausePanel.SetActive(false);
             pauseButton.SetActive(false);
             pauseest.SetActive(true);
-            Debug.Log("reach");
+            //Debug.Log("reach");
         }
         pausePanel.SetActive(false);
         pauseButton.SetActive(true);
